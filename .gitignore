@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Config with secrets
+config/llm_config.py
+config/settings.py
+
+# Data files (runtime generated)
+data/tickets.json
+data/users.json
+data/config.json
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

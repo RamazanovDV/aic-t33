@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Ticket {{ ticket.id }}{% endblock %}
+
+{% block content %}
+<div class="ticket-detail">
+    <div class="ticket-header">
+        <h1>{{ ticket.title }}</h1>
+        <div class="ticket-meta">
+            <span class="badge {{ ticket.status }}">{{ ticket.status }}</span>
+            <span class="badge priority {{ ticket.priority }}">{{ ticket.priority }}</span>
+            <span>Category: {{ ticket.category }}</span>
+            <span>User: {{ ticket.user_id }}</span>
+        </div>
+    </div>
+
+    <div class="ticket-description">
+        <h3>Description</h3>
+        <p>{{ ticket.description }}</p>
+    </div>
+
+    {% if ticket.rating %}
+    <div class="ticket-rating">
+        <h3>Rating</h3>
+        <p>⭐ {{ ticket.rating }}/5</p>
+    </div>
+    {% endif %}
+
+    <div class="messages">
+        <h3>Conversation</h3>
+        {% for message in ticket.messages %}
+        <div class="message {{ message.author }}">
+            <div class="message-header">
+                <span class="author">{{ 'User' if message.author == 'user' else 'Bot' }}</span>
+                <span class="time">{{ message.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+            </div>
+            <div class="message-text">{{ message.text }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="ticket-actions">
+        {% if ticket.status == 'open' %}
+        <form action="/tickets/{{ ticket.id }}/close" method="post" class="inline-form">
+            <select name="rating">
+                <option value="5">⭐⭐⭐⭐⭐ 5</option>
+                <option value="4">⭐⭐⭐⭐ 4</option>
+                <option value="3">⭐⭐⭐ 3</option>
+                <option value="2">⭐⭐ 2</option>
+                <option value="1">⭐ 1</option>
+            </select>
+            <button type="submit">Close Ticket</button>
+        </form>
+        {% else %}
+        <form action="/tickets/{{ ticket.id }}/reopen" method="post" class="inline-form">
+            <button type="submit">Reopen Ticket</button>
+        </form>
+        {% endif %}
+        <a href="/tickets" class="back-link">← Back to tickets</a>
+    </div>
+</div>
+{% endblock %}

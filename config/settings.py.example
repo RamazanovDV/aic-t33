@@ -1,0 +1,6 @@
+# Emulator Settings
+
+GENERATE_INTERVAL = 30  # seconds between new ticket generation
+RESPONSE_INTERVAL = 45   # seconds between user response simulation
+MAX_OPEN_TICKETS = 10    # maximum number of open tickets
+REOPEN_THRESHOLD = 3     # rating below which tickets may be reopened

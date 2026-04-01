@@ -1,0 +1,30 @@
+user_profiles:
+  - id: user_001
+    name: "Алексей Петров"
+    position: "Менеджер проектов"
+    avatar: "👨‍💼"
+
+  - id: user_002
+    name: "Мария Сидорова"
+    position: "Бухгалтер"
+    avatar: "👩‍💼"
+
+  - id: user_003
+    name: "Дмитрий Козлов"
+    position: "Разработчик"
+    avatar: "👨‍💻"
+
+  - id: user_004
+    name: "Елена Новикова"
+    position: "Маркетолог"
+    avatar: "👩‍🎨"
+
+  - id: user_005
+    name: "Иван Морозов"
+    position: "Системный администратор"
+    avatar: "👨‍🔧"
+
+  - id: user_006
+    name: "Ольга Волкова"
+    position: "HR менеджер"
+    avatar: "👩‍💼"

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<div class="users-page">
+    <h1>Users</h1>
+    
+    <div class="users-grid">
+        {% for user in users %}
+        <div class="user-card">
+            <div class="user-avatar">{{ user.avatar }}</div>
+            <div class="user-info">
+                <h3>{{ user.name }}</h3>
+                <p class="user-position">{{ user.position }}</p>
+                <p class="user-rating">⭐ {{ "%.1f"|format(user.rating) }}</p>
+                <p class="user-tickets">Open tickets: {{ user.open_tickets|length }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
