@@ -28,15 +28,19 @@
 
     <div class="messages">
         <h3>Conversation</h3>
-        {% for message in ticket.messages %}
-        <div class="message {{ message.author }}">
-            <div class="message-header">
-                <span class="author">{{ 'User' if message.author == 'user' else 'Bot' }}</span>
-                <span class="time">{{ message.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+        <div class="chat-container">
+            {% for message in ticket.messages %}
+            <div class="chat-message {{ message.author }}">
+                <div class="avatar">
+                    {% if message.author == 'bot' %}🤖{% else %}👤{% endif %}
+                </div>
+                <div class="bubble">
+                    <div class="bubble-content">{{ message.text }}</div>
+                    <div class="bubble-time">{{ message.created_at.strftime('%H:%M') }}</div>
+                </div>
             </div>
-            <div class="message-text">{{ message.text }}</div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
     <div class="ticket-actions">
