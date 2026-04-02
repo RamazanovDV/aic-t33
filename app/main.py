@@ -55,6 +55,8 @@ app.mount("/static", StaticFiles(directory=str(Path(__file__).parent / "static")
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 
 app.include_router(control.router)
+app.include_router(tickets.router)
+app.include_router(users.router)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -171,9 +173,6 @@ async def reopen_ticket_action(ticket_id: str):
             return RedirectResponse(url=f"/tickets/{ticket_id}", status_code=status.HTTP_303_SEE_OTHER)
     raise HTTPException(status_code=404, detail="Ticket not found")
 
-
-app.include_router(tickets.router)
-app.include_router(users.router)
 
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
